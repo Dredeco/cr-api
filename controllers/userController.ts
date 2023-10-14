@@ -1,7 +1,6 @@
 const {User: userModel} = require('../models/User.ts')
 
 const userController = {
-
     create: async(req, res) => {
         try {
             const user = {
