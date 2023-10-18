@@ -12,7 +12,7 @@ const incidentSchema = new Schema({
         required: true
     },
     user: {
-        type: Date,
+        type: String,
         required: true
     },
     supervisor: {
@@ -33,7 +33,6 @@ const incidentSchema = new Schema({
     },
     fixProc: {
         type: String,
-        required: true
     },
     observations: {
         type: String,

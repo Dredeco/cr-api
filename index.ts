@@ -11,7 +11,7 @@ conn();
 
 // Routes
 const routes = require('./routes/router')
-app.use("/api");
+app.use("/api", routes);
 
 app.listen(5000, () => {
     console.log("Servidor Online!");

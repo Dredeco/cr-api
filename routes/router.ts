@@ -1,10 +1,13 @@
-const router = require('express').Router()
+import { Router } from 'express'
+
+const router = Router()
 
 // User router
-const userRouter = require('./user.ts')
-router.use("/user", userRouter)
+const userRouter = require('./user')
+router.use(userRouter)
 
-const incidentRouter = require('./incident.ts')
-router.use('/incident', incidentRouter)
+// Incident router
+const incidentRouter = require('./incident')
+router.use(incidentRouter)
 
 module.exports = router;

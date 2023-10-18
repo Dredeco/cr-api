@@ -1,15 +1,15 @@
+import { Request, Response } from "express";
 const {User: userModel} = require('../models/User.ts')
 
-const userController = {
-    create: async(req, res) => {
+export const userController = {
+    create: async(req: Request, res: Response) => {
         try {
             const user = {
                 key: req.body.key,
                 name: req.body.name,
-                password: req.body.password,
             };
 
-            if(!user.key || !user.name || !user.password) {
+            if(!user.key || !user.name) {
                 res.status(400).json({msg: "Todos os campos são obrigatórios"})
             }
 
@@ -21,19 +21,20 @@ const userController = {
         }
     },
 
-    getAll: async(req, res) => {
+    getAll: async(req: Request, res: Response) => {
         try {
-            const response = await userModel.find()
-            res.status(200).json(response);
+            const users = await userModel.find()
+            res.status(200).json({users})
         } catch (error) {
-            console.log(error);
+            console.log(error)
         }
     },
 
-    get: async(req, res) => {
+    get: async(req: Request, res: Response) => {
         try {
-            const id = req.params.id
-            const user = await userModel.findById(id)
+            const key = req.params.key.toUpperCase()
+            const user = await userModel.findOne({key: key})
+            console.log(key, user)
 
             if(!user) {
                 res.status(404).json({msg: "Usuário não encontrado"})
@@ -45,7 +46,7 @@ const userController = {
         }
     },
 
-    delete: async(req, res) => {
+    delete: async(req: Request, res: Response) => {
         try {
             const id = req.params.id
             const user = await userModel.findById(id)
@@ -62,7 +63,7 @@ const userController = {
         }
     },
 
-    update: async (req, res) => {
+    update: async (req: Request, res: Response) => {
         const id = req.params.id;
         const user = await userModel.findById(id)
 
@@ -82,5 +83,3 @@ const userController = {
     }
 
 }
-
-module.exports = userController;

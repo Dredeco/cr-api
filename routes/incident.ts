@@ -1,24 +1,18 @@
-const router = require('express').Router()
-const incidentController = require('../controllers/incidentsController')
+import { Request, Response, Router } from 'express'
+import { incidentController } from '../controllers/incidentsController'
+
+const router = Router()
 
 router
-    .route("/user")
-    .post((req, res) => incidentController.create(req, res))
+    .route("/incident")
+    .post((req: Request, res: Response) => incidentController.create(req, res))
 
 router
-    .route("/user")
-    .get((req, res) => incidentController.getAll(req, res))
+    .route("/incident")
+    .get((req: Request, res: Response) => incidentController.getAll(req, res))
 
 router
-    .route("/user/:id")
-    .get((req, res) => incidentController.get(req, res))
-
-router
-    .route("/user/:id")
-    .delete((req, res) => incidentController.delete(req, res))
-
-router
-    .route("/user/:id")
-    .put((req, res) => incidentController.update(req, res))
+    .route("/incident/:name")
+    .get((req: Request, res: Response) => incidentController.get(req, res))
 
 module.exports = router;
