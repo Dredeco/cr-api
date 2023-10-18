@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-const {User: userModel} = require('../models/User.ts')
+const {User: userModel} = require('./../models/User')
 
 export const userController = {
     create: async(req: Request, res: Response) => {
