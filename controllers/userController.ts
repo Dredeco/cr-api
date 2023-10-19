@@ -7,6 +7,7 @@ export const userController = {
             const user = {
                 key: req.body.key,
                 name: req.body.name,
+                role: req.body.role
             };
 
             if(!user.key || !user.name) {
@@ -64,20 +65,12 @@ export const userController = {
     },
 
     update: async (req: Request, res: Response) => {
-        const id = req.params.id;
-        const user = await userModel.findById(id)
-
-        if(!user){
-            res.status(404).json({msg: "Usuário não encontrado"})
-        }
 
         const newUserData = {
-            key: req.body.key,
-            name: req.body.name,
-            password: req.body.password
+            role: req.body.role
         }
 
-        const updatedUser = await userModel.findByIdAndUpdate(id, newUserData)
+        const updatedUser = await userModel.updateMany({}, newUserData)
     
         res.status(200).json({msg: "Usuário atualizado", newUserData})
     }

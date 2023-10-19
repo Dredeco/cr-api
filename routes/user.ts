@@ -20,7 +20,7 @@ router
     .delete((req: Request, res: Response) => userController.delete(req, res))
 
 router
-    .route("/user/:id")
+    .route("/user")
     .put((req: Request, res: Response) => userController.update(req, res))
 
 module.exports = router;
