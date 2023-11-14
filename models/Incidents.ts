@@ -7,6 +7,14 @@ const incidentSchema = new Schema({
         required: true,
         unique: true
     },
+    task: {
+        type: String,
+        unique: true
+    },
+    stask: {
+        type: String,
+        unique: true
+    },
     date: {
         type: String,
         required: true

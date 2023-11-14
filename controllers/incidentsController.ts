@@ -7,13 +7,15 @@ export const incidentController = {
 
             const incident = {
                 number: req.body.number,
+                task: req.body.task,
+                stask: req.body.stask,
                 date: req.body.date,
                 user: req.body.user,
                 supervisor: req.body.supervisor,
                 classification: req.body.classification,
                 system: req.body.system,
                 motive: req.body.motive,
-                fixProc: req.body.ficProc,
+                fixProc: req.body.fixProc,
                 observations: req.body.observations
             }
 
@@ -21,7 +23,7 @@ export const incidentController = {
 
             res.status(201).json({msg: "Incidente criado com sucesso:", response})
         } catch (error) {
-            console.log(error)
+            alert(error)
         }
     },
 
@@ -30,7 +32,7 @@ export const incidentController = {
             const response = await incidentModel.find({})
             return res.status(200).json({response})
         } catch (error) {
-            console.log(error)
+            alert(error)
         }
     },
 
@@ -42,7 +44,7 @@ export const incidentController = {
             return res.status(200).json({incidentUser})
 
         } catch (error) {
-            
+            alert(error)
         }
     }
 }
