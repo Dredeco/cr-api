@@ -4,7 +4,6 @@ const {Incident: incidentModel} = require('../models/Incidents')
 export const incidentController = {
     create: async(req: Request, res: Response) => {
         try {
-
             const incident = {
                 number: req.body.number,
                 task: req.body.task,
@@ -22,7 +21,7 @@ export const incidentController = {
 
             res.status(201).json({msg: "Incidente criado com sucesso:", response})
         } catch (error) {
-            alert(error)
+            console.log(error)
         }
     },
 
@@ -31,7 +30,7 @@ export const incidentController = {
             const response = await incidentModel.find({})
             return res.status(200).json({response})
         } catch (error) {
-            alert(error)
+            console.log(error)
         }
     },
 
@@ -43,7 +42,7 @@ export const incidentController = {
             return res.status(200).json({incidentUser})
 
         } catch (error) {
-            alert(error)
+            console.log(error)
         }
     }
 }
