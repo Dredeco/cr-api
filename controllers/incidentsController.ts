@@ -14,7 +14,6 @@ export const incidentController = {
                 supervisor: req.body.supervisor,
                 classification: req.body.classification,
                 system: req.body.system,
-                motive: req.body.motive,
                 fixProc: req.body.fixProc,
                 observations: req.body.observations
             }

@@ -35,10 +35,6 @@ const incidentSchema = new Schema({
         type: String,
         required: true
     },
-    motive: {
-        type: String,
-        required: true
-    },
     fixProc: {
         type: String,
     },
