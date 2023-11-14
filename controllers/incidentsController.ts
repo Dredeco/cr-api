@@ -8,7 +8,7 @@ export const incidentController = {
             const incident = {
                 number: req.body.number,
                 task: req.body.task,
-                stask: req.body.stask,
+                sctask: req.body.sctask,
                 date: req.body.date,
                 user: req.body.user,
                 supervisor: req.body.supervisor,

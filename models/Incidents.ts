@@ -11,7 +11,7 @@ const incidentSchema = new Schema({
         type: String,
         unique: true
     },
-    stask: {
+    sctask: {
         type: String,
         unique: true
     },
