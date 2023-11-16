@@ -12,7 +12,11 @@ router
     .get((req: Request, res: Response) => incidentController.getAll(req, res))
 
 router
-    .route("/incident/:name")
+    .route("/incident/:number")
     .get((req: Request, res: Response) => incidentController.get(req, res))
+
+router
+    .route("/incident/:number")
+    .post((req: Request, res: Response) => incidentController.update(req, res))
 
 module.exports = router;

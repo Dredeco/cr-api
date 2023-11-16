@@ -36,13 +36,37 @@ export const incidentController = {
 
     get: async(req: Request, res: Response) => {
         try {
-            const name = req.params.name
-            const incidentUser = await incidentModel.find({user: name})
+            const number = req.params.number
+            const incidentNumber = await incidentModel.findOne({"number": number})
 
-            return res.status(200).json({incidentUser})
+            return res.status(200).json({incidentNumber})
 
         } catch (error) {
             console.log(error)
         }
+    },
+
+    update: async(req: Request, res: Response) => {
+        try {
+            const incident = {
+                number: req.body.number,
+                task: req.body.task,
+                sctask: req.body.sctask,
+                date: req.body.date,
+                user: req.body.user,
+                supervisor: req.body.supervisor,
+                classification: req.body.classification,
+                system: req.body.system,
+                fixProc: req.body.fixProc,
+                observations: req.body.observations,
+                supervisorObservations: req.body.supervisorObservations
+            }
+            const incidentNumber = await incidentModel.findOneAndUpdate(incident.number, incident)
+
+            return res.status(200).json({incidentNumber})
+
+            } catch (error) {
+                console.log(error)
+            }
     }
 }

@@ -42,6 +42,9 @@ const incidentSchema = new Schema({
         type: String,
         required: true
     },
+    supervisorObsevations: {
+        type: String,
+    }
 }, {timestamps: true})
 
 const Incident = mongoose.model('Incident', incidentSchema)
