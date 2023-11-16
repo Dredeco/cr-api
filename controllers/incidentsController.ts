@@ -34,12 +34,24 @@ export const incidentController = {
         }
     },
 
-    get: async(req: Request, res: Response) => {
+    getByNumber: async(req: Request, res: Response) => {
         try {
             const number = req.params.number
             const incidentNumber = await incidentModel.findOne({"number": number})
 
             return res.status(200).json({incidentNumber})
+
+        } catch (error) {
+            console.log(error)
+        }
+    },
+
+    getByUser: async(req: Request, res: Response) => {
+        try {
+            const user = req.params.user
+            const incidentUser = await incidentModel.find({name: user})
+
+            return res.status(200).json({incidentUser})
 
         } catch (error) {
             console.log(error)

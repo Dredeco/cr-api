@@ -13,7 +13,11 @@ router
 
 router
     .route("/incident/:number")
-    .get((req: Request, res: Response) => incidentController.get(req, res))
+    .get((req: Request, res: Response) => incidentController.getByNumber(req, res))
+
+router
+    .route("/incident/user/:name")
+    .get((req: Request, res: Response) => incidentController.getByUser(req, res))
 
 router
     .route("/incident/:number")
