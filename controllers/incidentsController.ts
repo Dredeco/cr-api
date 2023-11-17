@@ -49,8 +49,8 @@ export const incidentController = {
 
     getByUser: async(req: Request, res: Response) => {
         try {
-            const user = req.params.user
-            const incidentUser = await incidentModel.find({name: user})
+            const user = req.params.name
+            const incidentUser = await incidentModel.find({user: user})
 
             return res.status(200).json({incidentUser})
 
