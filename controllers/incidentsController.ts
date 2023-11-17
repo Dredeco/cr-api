@@ -14,7 +14,8 @@ export const incidentController = {
                 classification: req.body.classification,
                 system: req.body.system,
                 fixProc: req.body.fixProc,
-                observations: req.body.observations
+                observations: req.body.observations,
+                supervisorObservations: req.body.supervisorObservations
             }
 
             const response = await incidentModel.create(incident)
@@ -73,7 +74,7 @@ export const incidentController = {
                 observations: req.body.observations,
                 supervisorObservations: req.body.supervisorObservations
             }
-            const incidentNumber = await incidentModel.findOneAndUpdate(incident.number, incident)
+            const incidentNumber = await incidentModel.findOneAndUpdate({number: incident.number}, incident, {upsert: true, new: true})
 
             return res.status(200).json({incidentNumber})
 

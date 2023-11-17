@@ -29,7 +29,6 @@ const incidentSchema = new Schema({
     },
     classification: {
         type: String,
-        required: true
     },
     system: {
         type: String,
@@ -42,7 +41,7 @@ const incidentSchema = new Schema({
         type: String,
         required: true
     },
-    supervisorObsevations: {
+    supervisorObservations: {
         type: String,
     }
 }, {timestamps: true})
