@@ -9,9 +9,11 @@ const incidentSchema = new Schema({
     },
     task: {
         type: String,
+        unique: false
     },
     sctask: {
         type: String,
+        unique: false
     },
     date: {
         type: String,
