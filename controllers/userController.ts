@@ -7,7 +7,8 @@ export const userController = {
             const user = {
                 key: req.body.key,
                 name: req.body.name,
-                role: req.body.role
+                role: req.body.role,
+                team: req.body.team
             };
 
             if(!user.key || !user.name || !user.role) {
@@ -75,12 +76,13 @@ export const userController = {
         const newUserData = {
             key: req.body.key,
             name: req.body.name,
-            role: req.body.role
+            role: req.body.role,
+            team: req.body.team
         }
 
-        const updatedUser = await userModel.findOneAndUpdate(user, newUserData)
+        const updatedUser = await userModel.findOneAndUpdate({key: user.key}, newUserData, {upsert: true, new: true})
     
-        res.status(200).json({msg: "Usuário atualizado", newUserData})
+        res.status(200).json({msg: "Usuário atualizado", updatedUser})
     }
 
 }
